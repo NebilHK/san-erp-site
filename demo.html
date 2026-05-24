@@ -2,171 +2,304 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Démo — SAN ERP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Démo SAN ERP — Industrial Management Solution</title>
 
   <style>
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#f4f7fb;
-      color:#0f172a;
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #0f172a;
     }
 
-    header{
-      background:linear-gradient(135deg,#0f172a,#1e3a8a);
-      color:white;
-      padding:24px 7%;
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 24px 7%;
     }
 
-    .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:20px;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .brand{
-      font-size:34px;
-      font-weight:900;
+    .brand {
+      font-size: 30px;
+      font-weight: 900;
     }
 
-    .brand span{
-      color:#f97316;
+    .brand span { color: #f97316; }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      margin-left: 18px;
     }
 
-    .back{
-      color:white;
-      text-decoration:none;
-      font-weight:700;
-      border:1px solid rgba(255,255,255,0.3);
-      padding:10px 16px;
-      border-radius:12px;
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1e40af);
+      color: white;
+      padding: 80px 7%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
     }
 
-    .hero{
-      padding:70px 7%;
-      background:linear-gradient(135deg,#0f172a,#1e3a8a);
-      color:white;
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      margin: 0;
+      line-height: 1;
+      font-weight: 900;
     }
 
-    .hero h1{
-      font-size:58px;
-      margin:0;
-      font-weight:900;
+    .hero p {
+      font-size: 22px;
+      line-height: 1.6;
+      opacity: 0.95;
     }
 
-    .hero p{
-      font-size:22px;
-      line-height:1.6;
-      max-width:900px;
-      opacity:0.95;
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.25);
     }
 
-    section{
-      padding:70px 7%;
+    .hero-card li {
+      font-size: 18px;
+      margin-bottom: 14px;
     }
 
-    .title{
-      font-size:42px;
-      font-weight:900;
-      margin-bottom:14px;
+    section {
+      padding: 70px 7%;
     }
 
-    .subtitle{
-      color:#475569;
-      font-size:19px;
-      line-height:1.6;
-      max-width:850px;
-      margin-bottom:40px;
+    .title {
+      font-size: 42px;
+      font-weight: 900;
+      margin: 0 0 14px;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:26px;
+    .subtitle {
+      font-size: 19px;
+      color: #475569;
+      line-height: 1.6;
+      max-width: 880px;
+      margin-bottom: 36px;
     }
 
-    .card{
-      background:white;
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:0 14px 40px rgba(15,23,42,0.08);
-      border:1px solid #e5e7eb;
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
     }
 
-    .image{
-      height:220px;
-      background:#dbeafe;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:70px;
+    .step {
+      background: white;
+      border-radius: 22px;
+      padding: 26px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.08);
     }
 
-    .content{
-      padding:24px;
+    .step-number {
+      width: 46px;
+      height: 46px;
+      background: #1e40af;
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 16px;
     }
 
-    .content h3{
-      margin-top:0;
-      font-size:28px;
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
     }
 
-    .content p{
-      color:#475569;
-      line-height:1.6;
-      margin-bottom:0;
+    .step p {
+      color: #475569;
+      line-height: 1.6;
     }
 
-    .contact{
-      background:#0f172a;
-      color:white;
-      border-radius:28px;
-      padding:50px;
-      text-align:center;
+    .showcase {
+      background: #0f172a;
+      color: white;
     }
 
-    .contact h2{
-      font-size:42px;
-      margin-top:0;
+    .showcase .subtitle {
+      color: #cbd5e1;
     }
 
-    .btn{
-      display:inline-block;
-      margin-top:20px;
-      background:white;
-      color:#1e3a8a;
-      text-decoration:none;
-      padding:16px 26px;
-      border-radius:14px;
-      font-weight:900;
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 26px;
     }
 
-    footer{
-      background:#020617;
-      color:#cbd5e1;
-      text-align:center;
-      padding:30px;
+    .screen {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
     }
 
-    @media(max-width:768px){
+    .screen img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #e5e7eb;
+    }
 
-      .hero h1{
-        font-size:42px;
+    .screen-content {
+      padding: 22px;
+    }
+
+    .screen-content h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .screen-content p {
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .case {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .case img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(15,23,42,0.16);
+      border: 1px solid #e5e7eb;
+    }
+
+    .case-box {
+      background: white;
+      border-radius: 28px;
+      padding: 34px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 18px 50px rgba(15,23,42,0.1);
+    }
+
+    .case-box h3 {
+      font-size: 32px;
+      margin-top: 0;
+    }
+
+    .case-box p,
+    .case-box li {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .benefit {
+      background: white;
+      border-radius: 22px;
+      padding: 26px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 12px 35px rgba(15,23,42,0.08);
+    }
+
+    .benefit h3 {
+      margin-top: 0;
+      font-size: 23px;
+    }
+
+    .benefit p {
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      color: white;
+      text-align: center;
+      border-radius: 34px;
+      padding: 60px 30px;
+    }
+
+    .cta-section h2 {
+      font-size: 42px;
+      margin-top: 0;
+    }
+
+    .cta-section p {
+      font-size: 20px;
+      opacity: 0.92;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 16px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      background: white;
+      color: #1e3a8a;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.14);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px;
+    }
+
+    @media (max-width: 850px) {
+      .hero, .case {
+        grid-template-columns: 1fr;
       }
 
-      .hero p{
-        font-size:18px;
+      nav a {
+        margin-left: 0;
+        margin-right: 14px;
       }
 
-      .title{
-        font-size:34px;
+      .title {
+        font-size: 34px;
       }
 
-      .contact{
-        padding:30px 20px;
+      .hero p {
+        font-size: 18px;
+      }
+
+      .screen img {
+        height: 210px;
       }
     }
   </style>
@@ -175,144 +308,263 @@
 <body>
 
 <header>
-  <div class="top">
-    <div class="brand">
-      SAN <span>ERP</span>
+  <nav>
+    <div class="brand">SAN <span>ERP</span></div>
+    <div>
+      <a href="index.html">Accueil</a>
+      <a href="#scenario">Scénario</a>
+      <a href="#captures">Captures</a>
+      <a href="#contact">Contact</a>
     </div>
-
-    <a href="index.html" class="back">
-      ← Retour accueil
-    </a>
-  </div>
+  </nav>
 </header>
 
-<section class="hero">
-  <h1>Démonstration SAN ERP</h1>
+<main>
 
-  <p>
-    Découvrez l’interface moderne de SAN ERP pour la gestion industrielle :
-    achats, magasin, réservations stock, production, personnel, heures,
-    éditions et reporting.
+  <section class="hero">
+    <div>
+      <h1>Démo SAN ERP</h1>
+      <p><strong>Industrial Management Solution</strong></p>
+      <p>
+        Découvrez un exemple concret d’utilisation de SAN ERP :
+        suivi des heures, production, magasin, avancement, inventaire,
+        administration et éditions professionnelles.
+      </p>
 
-  </p>
-</section>
-
-<section>
-
-  <div class="title">
-    Modules ERP
-  </div>
-
-  <div class="subtitle">
-    SAN ERP centralise les opérations industrielles dans une seule plateforme,
-    accessible sur PC et mobile.
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <div class="image">🛒</div>
-
-      <div class="content">
-        <h3>Achats</h3>
-
-        <p>
-          Gestion des demandes d’achat,avec niveaux de validations,
-          commandes fournisseurs et réceptions.
-        </p>
-      </div>
+      <a class="btn" href="#scenario">Voir le scénario</a>
+      <a class="btn secondary" href="#captures">Voir les captures</a>
     </div>
 
-    <div class="card">
-      <div class="image">🏬</div>
-
-      <div class="content">
-        <h3>Magasin & Stock</h3>
-
-        <p>
-          Entrées, sorties par affaire, stock minimum,
-          consultations et réservations matières...
-        </p>
-      </div>
+    <div class="hero-card">
+      <h2>Ce que montre cette démo</h2>
+      <ul>
+        <li>Navigation claire entre les modules ERP</li>
+        <li>Suivi production et avancement affaire</li>
+        <li>Gestion magasin, stock et inventaire</li>
+        <li>Consultation et contrôle des heures</li>
+        <li>Administration et droits utilisateurs</li>
+        <li>Vision PC et mobile pour PME industrielles</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="card">
-      <div class="image">🏭</div>
-
-      <div class="content">
-        <h3>Production</h3>
-
-        <p>
-          Gestion des affaires, phases,
-          consommations et suivi d’avancement, planning, gantt...
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="image">👥</div>
-
-      <div class="content">
-        <h3>Personnel</h3>
-
-        <p>
-          Gestion du personnel, suivi des congés
-          planing gardiennage ...
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="image">⏱</div>
-
-      <div class="content">
-        <h3>Heures</h3>
-
-        <p>
-          Saisie rapide des heures industrielles par affaire,
-          consultations, contrôle et états d'avancement de la production.
-        </p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="image">📊</div>
-
-      <div class="content">
-        <h3>Éditions & PDF</h3>
-
-        <p>
-          Génération d’éditions,
-          export PDF et impression professionnelle.
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="contact">
-
-    <h2>Demander une démonstration complète</h2>
-
-    <p>
-      Contactez-nous pour une présentation SAN ERP adaptée
-      à votre activité industrielle.
+  <section id="scenario">
+    <h2 class="title">Scénario de démonstration</h2>
+    <p class="subtitle">
+      Cette démonstration montre comment SAN ERP peut accompagner une entreprise industrielle,
+      depuis l’organisation des modules jusqu’au suivi opérationnel et aux éditions.
     </p>
 
-    <a href="mailto:contact@san-erp.com" class="btn">
-      Contact démonstration
-    </a>
+    <div class="workflow">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Organisation ERP</h3>
+        <p>
+          L’utilisateur accède aux modules selon son profil :
+          achats, magasin, production, heures, personnel, inventaire ou administration.
+        </p>
+      </div>
 
-  </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Suivi des heures</h3>
+        <p>
+          Les équipes saisissent leurs heures par affaire et phase.
+          La direction peut consulter les heures industrielles et les états.
+        </p>
+      </div>
 
-</section>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Production & avancement</h3>
+        <p>
+          Les responsables suivent l’avancement des affaires,
+          consultent les détails et visualisent la planification.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Magasin & inventaire</h3>
+        <p>
+          Le magasin gère les mouvements, les consultations,
+          le stock minimum et les besoins liés à la production.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <h3>Administration</h3>
+        <p>
+          L’administrateur pilote les utilisateurs, les profils,
+          les droits d’accès et la sécurité des menus.
+        </p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">6</div>
+        <h3>Éditions & pilotage</h3>
+        <p>
+          SAN ERP facilite les impressions, les exports PDF,
+          les consultations et la traçabilité des opérations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="captures">
+    <h2 class="title">Captures de l’application</h2>
+    <p class="subtitle">
+      Voici des exemples réels d’écrans de SAN ERP pour présenter les principaux modules.
+    </p>
+
+    <div class="screens">
+
+      <div class="screen">
+        <img src="images/menu-admin.png" alt="Menu administration SAN ERP">
+        <div class="screen-content">
+          <h3>Administration</h3>
+          <p>Gestion des accès, utilisateurs, profils et configuration générale de l’ERP.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/menu-magasin.png" alt="Menu magasin SAN ERP">
+        <div class="screen-content">
+          <h3>Magasin</h3>
+          <p>Accès aux enregistrements, consultations, stock minimum et éditions magasin.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/menu-production.png" alt="Menu production SAN ERP">
+        <div class="screen-content">
+          <h3>Production</h3>
+          <p>Suivi industriel, planification, avancement et gestion des opérations de production.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/menu-inventaire.png" alt="Menu inventaire SAN ERP">
+        <div class="screen-content">
+          <h3>Inventaire</h3>
+          <p>Vue dédiée aux inventaires et au contrôle des stocks de l’entreprise.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/heures-industrielles.png" alt="Heures industrielles SAN ERP">
+        <div class="screen-content">
+          <h3>Heures industrielles</h3>
+          <p>Saisie et suivi des heures par affaire, phase et personnel.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/consultation-heures-indus.png" alt="Consultation heures industrielles SAN ERP">
+        <div class="screen-content">
+          <h3>Consultation des heures</h3>
+          <p>Analyse des heures saisies pour le contrôle et le pilotage industriel.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/menu-avancement-affaire.png" alt="Menu avancement affaire SAN ERP">
+        <div class="screen-content">
+          <h3>Avancement affaire</h3>
+          <p>Suivi global de l’avancement des affaires et des phases de production.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/avancement-affaire_détails.png" alt="Détails avancement affaire SAN ERP">
+        <div class="screen-content">
+          <h3>Détails d’avancement</h3>
+          <p>Vue détaillée permettant d’analyser l’évolution d’une affaire industrielle.</p>
+        </div>
+      </div>
+
+      <div class="screen">
+        <img src="images/planification-gantt.png" alt="Planification Gantt SAN ERP">
+        <div class="screen-content">
+          <h3>Planning Gantt</h3>
+          <p>Visualisation planning pour suivre les délais, les phases et les priorités.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="case">
+      <div class="case-box">
+        <h3>Exemple client : pilotage d’une PME industrielle</h3>
+        <p>
+          Une PME peut utiliser SAN ERP pour centraliser ses flux quotidiens :
+          heures, production, magasin, stock, administration et impressions.
+        </p>
+
+        <ul>
+          <li>Moins de fichiers Excel dispersés</li>
+          <li>Meilleure traçabilité des opérations</li>
+          <li>Droits d’accès par profil</li>
+          <li>Interface accessible sur PC et mobile</li>
+          <li>Reporting et éditions PDF</li>
+        </ul>
+      </div>
+
+      <img src="images/planification-gantt.png" alt="Exemple planning SAN ERP">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="title">Bénéfices pour l’entreprise</h2>
+    <p class="subtitle">
+      SAN ERP aide les entreprises industrielles à mieux organiser leurs opérations
+      et à gagner en visibilité sur les données clés.
+    </p>
+
+    <div class="benefits">
+      <div class="benefit">
+        <h3>Centralisation</h3>
+        <p>Les données achats, stock, heures, production et administration sont regroupées.</p>
+      </div>
+
+      <div class="benefit">
+        <h3>Traçabilité</h3>
+        <p>Chaque opération peut être suivie, contrôlée et imprimée selon le besoin.</p>
+      </div>
+
+      <div class="benefit">
+        <h3>Sécurité</h3>
+        <p>Les accès sont gérés par profil pour limiter les actions non autorisées.</p>
+      </div>
+
+      <div class="benefit">
+        <h3>Mobilité</h3>
+        <p>L’interface est utilisable sur ordinateur, tablette et téléphone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta-section">
+      <h2>Demander une démonstration complète</h2>
+      <p>
+        Une présentation personnalisée peut être préparée selon votre secteur :
+        fabrication, maintenance, mécanique, métallurgie ou projets industriels.
+      </p>
+
+      <a class="btn" href="mailto:contact@san-erp.com">Demander une démo</a>
+      <a class="btn secondary" href="index.html">Retour au site</a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  SAN ERP — Industrial Management Solution
+  <p>SAN ERP — Industrial Management Solution</p>
+  <p>Version 1.0 — Powered by Next.js + Supabase</p>
 </footer>
 
 </body>
