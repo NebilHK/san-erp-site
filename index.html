@@ -24,6 +24,45 @@
       padding: 28px 7%;
     }
 
+.top-contact{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+  padding:14px 20px;
+  background:rgba(255,255,255,0.08);
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.top-contact div{
+  color:white;
+  font-size:18px;
+  font-weight:700;
+}
+
+.top-contact a{
+  color:white;
+  text-decoration:none;
+}
+
+.top-contact a:hover{
+  color:#f97316;
+}
+
+@media(max-width:768px){
+
+  .top-contact{
+    gap:12px;
+    padding:12px;
+  }
+
+  .top-contact div{
+    font-size:14px;
+    text-align:center;
+  }
+}
+
     nav {
       display: flex;
       justify-content: space-between;
@@ -245,6 +284,21 @@
 <body>
   <header>
     <nav>
+<div class="top-contact">
+  <div>
+    📧
+    <a href="mailto:contactsan6@gmail.com?subject=Demande%20d'informations">
+      contactsan6@gmail.com
+    </a>
+  </div>
+
+  <div>
+    🌐
+    <a href="https://san-erp.netlify.app" target="_blank">
+      https://san-erp.netlify.app
+    </a>
+  </div>
+</div>
       <div class="brand">SAN <span>ERP</span></div>
       <div>
         <a href="#fonctionnalites">Fonctionnalités</a>
